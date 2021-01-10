@@ -160,7 +160,7 @@ int main(){
 				end2=rdtsc();
 
 				cpu_time_used2 = ((end2 - start2));
-				printf("%ld, %llu \n", cpu_time_used,cpu_time_used2);
+				printf("%llu \n", cpu_time_used2);
 
 				samples.push_back(Sample(p1,y,cpu_time_used2,l));
 				//cout<<start1<<" "<<start<<endl;
