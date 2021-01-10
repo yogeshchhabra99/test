@@ -141,10 +141,10 @@ int main(){
 		for(i=0;i<S*W*B;i+=B){
 			temp=temp&A[i];	
 		}
-	
+	printf("debug1\n");
 	printf("%d\n",temp);	
 	AESencrypt(p1);
-
+	printf("debug2\n");
 	///probe
 
 		ull start2,end2,cpu_time_used2;
@@ -170,6 +170,7 @@ int main(){
 				}
 			}
 		}
+		printf("debug3\n");
 		for(int i=0;i<16;i++){
 			p[i]=rand();	
 		}
