@@ -37,20 +37,20 @@ void setup(){
 }
 
 
-class Sample{
-	public:
-	vector<unsigned char> p;
-	int y;
-	ull m;
-	int l;
-	Sample(vector<unsigned char> p_,int y_,int m_,int l_){
-		for(int i=0;i<p_.size();i++)
-			p.push_back(p_[i]);
-		y=y_;
-		m=m_;
-		l=l_;
-	}	
-};
+// class Sample{
+// 	public:
+// 	vector<unsigned char> p;
+// 	int y;
+// 	ull m;
+// 	int l;
+// 	Sample(vector<unsigned char> p_,int y_,int m_,int l_){
+// 		for(int i=0;i<p_.size();i++)
+// 			p.push_back(p_[i]);
+// 		y=y_;
+// 		m=m_;
+// 		l=l_;
+// 	}	
+// };
 
 ull rdtsc(){
 	unsigned int lo,hi;
@@ -162,11 +162,11 @@ int main(){
 				cpu_time_used2 = ((end2 - start2));
 				printf("%llu \n", cpu_time_used2);
 
-				samples.push_back(Sample(p1,y,cpu_time_used2,l));
+				//samples.push_back(Sample(p1,y,cpu_time_used2,l));
 				//cout<<start1<<" "<<start<<endl;
 				for(int i=0;i<16;i++){
 					if(i%4==l)
-						Mk[i][(p[i]^y)>>4] += cpu_time_used;			
+						Mk[i][(p[i]^y)>>4] += cpu_time_used2;			
 				}
 			}
 		}
@@ -174,47 +174,42 @@ int main(){
 			p[i]=rand();	
 		}
 	}
-	cout<<"samples:"<<samples.size()<<endl;
-	ull total[16][256];
-	int count[16][256];
-	for(int i=0;i<16;i++){
-		for(int k=0;k<256;k++){
-			total[i][k]=0;
-			count[i][k]=0;
-		}
-		//printf("\n");
-	}
-	for(int j=0;j<samples.size()-1;j++){
-		if(samples[j+1].m>samples[j].m*10){
-			for(int i=0;i<16;i++){
-				cout<<((samples[j+1].p[i]^samples[j+1].y)>>4);
-				cout<<" ";			
-			}		
-			cout<<endl;
-		}
-		for(int i=0;i<16;i++){
-		//	if(i%4==(3-samples[j].l)){
-				total[i][samples[j].p[i]^samples[j].y]+=samples[j].m;
-				count[i][samples[j].p[i]^samples[j].y]++;			
-		//	}		
-		}	
-	}
-	/*for(int i=0;i<16;i++){
-		for(int k=0;k<16;k++){
-			printf("%lld ",Mk[i][k]);
-		}
-		printf("\n");
-	}*/
+	// cout<<"samples:"<<samples.size()<<endl;
+	// ull total[16][256];
+	// int count[16][256];
+	// for(int i=0;i<16;i++){
+	// 	for(int k=0;k<256;k++){
+	// 		total[i][k]=0;
+	// 		count[i][k]=0;
+	// 	}
+	// 	//printf("\n");
+	// }
+	// for(int j=0;j<samples.size()-1;j++){
+	// 	if(samples[j+1].m>samples[j].m*10){
+	// 		for(int i=0;i<16;i++){
+	// 			cout<<((samples[j+1].p[i]^samples[j+1].y)>>4);
+	// 			cout<<" ";			
+	// 		}		
+	// 		cout<<endl;
+	// 	}
+	// 	for(int i=0;i<16;i++){
+	// 	//	if(i%4==(3-samples[j].l)){
+	// 			total[i][samples[j].p[i]^samples[j].y]+=samples[j].m;
+	// 			count[i][samples[j].p[i]^samples[j].y]++;			
+	// 	//	}		
+	// 	}	
+	// }
+	// /*for(int i=0;i<16;i++){
+	// 	for(int k=0;k<16;k++){
+	// 		printf("%lld ",Mk[i][k]);
+	// 	}
+	// 	printf("\n");
+	// }*/
 	for(int i=0;i<16;i++){
 		int nib=0,kmax=0;
 		for(int k=0;k<16;k++){
-			int ans=0;
-			for(int u=0;u<16;u++){
-				if(count[i][k*16+u]!=0)
-					ans+=total[i][k*16+u]/count[i][k*16+u];
-		//	else
-		//		cout<<0<<" ";
-			}
+			int ans=Mk[i][k];
+
 			if(ans>kmax){
 				kmax=ans;
 				nib=k;
