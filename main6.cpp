@@ -117,7 +117,7 @@ int main(){
 	
 	
 
-	int cycles=1800;
+	int cycles=500;
 	for(int c=0;c<cycles;c++){
 	//prime
 		vector<unsigned char> p1=generatePlainText();
@@ -127,6 +127,7 @@ int main(){
 		for(i=0;i<16;i++){
 			p[i]=p1[i];		
 		}
+		printf("cycle %d \n",c+1);
 		print_data("\n Plaintext:",p, 16);
 		cout<<endl;
 		
@@ -140,37 +141,7 @@ int main(){
 		for(i=0;i<S*W*B;i+=B){
 			temp=temp&A[i];	
 		}
-	////////////
-
-	//encryption
-/*	
-//	 Init vector 
-		unsigned char iv[AES_BLOCK_SIZE];
-		memset(iv, 0x00, AES_BLOCK_SIZE);
-		
-// Buffers for Encryption and Decryption 
-		unsigned char enc_out[((sizeof(p) + AES_BLOCK_SIZE) / AES_BLOCK_SIZE) * AES_BLOCK_SIZE];
-		unsigned char dec_out[sizeof(p)];
 	
-// AES-128 bit CBC Encryption 
-		AES_KEY enc_key, dec_key;
-		AES_set_encrypt_key(aes_key, sizeof(aes_key)*8, &enc_key);
-		AES_cbc_encrypt(p, enc_out, sizeof(p), &enc_key, iv, AES_ENCRYPT);
-		// AES-128 bit CBC Decryption //
-		memset(iv, 0x00, AES_BLOCK_SIZE); // don't forget to set iv vector again, else you can't decrypt data properly
-		AES_set_decrypt_key(aes_key, sizeof(aes_key)*8, &dec_key); // Size of key is in bits
-		AES_cbc_encrypt(enc_out, dec_out, sizeof(p), &dec_key, iv, AES_DECRYPT);	
-
-		// Printing and Verifying //
-//		print_data("\n Original ",p, sizeof(p)); // you can not print data as a string, because after Encryption its not ASCII
-	
-//		print_data("\n Encrypted",enc_out, sizeof(enc_out));
-		
-//		print_data("\n Decrypted",dec_out, sizeof(dec_out));
-	
-	//////
-*/
-
 	printf("%d\n",temp);	
 	AESencrypt(p1);
 
