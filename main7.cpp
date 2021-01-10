@@ -67,7 +67,7 @@ vector<unsigned char> generatePlainText(){
 	return p;
 }
 
-vector<unsigned char> AESencrypt(vector<unsigned char> p){
+void AESencrypt(vector<unsigned char> p){
 	vector<unsigned char> x,y;
 	for(int i=0;i<16;i++){
 		x.push_back(p[i]^aes_key[i]);		
@@ -128,7 +128,7 @@ int main(){
 			p[i]=p1[i];		
 		}
 		printf("cycle %d of %d \n",c+1,cycles);
-		//print_data("\n Plaintext:",p, 16);
+		print_data("\n Plaintext:",p, 16);
 		cout<<endl;
 		
 		int temp=1; 
@@ -141,10 +141,10 @@ int main(){
 		for(i=0;i<S*W*B;i+=B){
 			temp=temp&A[i];	
 		}
-	printf("debug1\n");
+	//printf("debug1\n");
 	printf("%d\n",temp);	
 	AESencrypt(p1);
-	printf("debug2\n");
+	//printf("debug2\n");
 	///probe
 
 		ull start2,end2,cpu_time_used2;
@@ -170,7 +170,7 @@ int main(){
 				}
 			}
 		}
-		printf("debug3\n");
+		//printf("debug3\n");
 		for(int i=0;i<16;i++){
 			p[i]=rand();	
 		}
