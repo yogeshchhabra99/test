@@ -127,8 +127,8 @@ int main(){
 		for(i=0;i<16;i++){
 			p[i]=p1[i];		
 		}
-		printf("cycle %d \n",c+1);
-		print_data("\n Plaintext:",p, 16);
+		printf("cycle %d of %d \n",c+1,cycles);
+		//print_data("\n Plaintext:",p, 16);
 		cout<<endl;
 		
 		int temp=1; 
@@ -147,30 +147,21 @@ int main(){
 
 	///probe
 
-		clock_t start, end, cpu_time_used;
-		time_t start1,end1,cpu_time_used1;
 		ull start2,end2,cpu_time_used2;
 
 		
 		for(int l=0;l<4;l++){
 			for(int y=0;y<256;y+=16){
-				start = clock();	//this works
-				//time(&start1);	//this doesn't
 				start2=rdtsc();		//this too works
 
 				for(int t=0;t<W;t++){
 					temp*=(A[(1024*l+4*y+t*S*B)]);
 				}
-				end = clock();
-				//time(&end1);
 				end2=rdtsc();
 
-				cpu_time_used = ((end - start));
-				//cpu_time_used1 = ((end1 - start1));
 				cpu_time_used2 = ((end2 - start2));
 				printf("%ld, %llu \n", cpu_time_used,cpu_time_used2);
-				//Mk(p,l,y)=cpu_time_used
-			//	cout<<cpu_time_used<<" "<<cpu_time_used2<<endl;
+
 				samples.push_back(Sample(p1,y,cpu_time_used2,l));
 				//cout<<start1<<" "<<start<<endl;
 				for(int i=0;i<16;i++){
