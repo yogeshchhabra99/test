@@ -244,6 +244,7 @@ int main(){
 		printf("\n");
 	}*/
 	for(int i=0;i<16;i++){
+		int nib=0,kmax=0;
 		for(int k=0;k<16;k++){
 			int ans=0;
 			for(int u=0;u<16;u++){
@@ -252,8 +253,13 @@ int main(){
 		//	else
 		//		cout<<0<<" ";
 			}
+			if(ans>kmax){
+				kmax=ans;
+				nib=k;
+			}
 			cout<<ans<<" ";
 		}
+		cout<<nib<<endl;
 		cout<<"\n-----------------------------------------\n";
 	}
 
