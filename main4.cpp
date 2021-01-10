@@ -94,7 +94,7 @@ int main(){
 	ios_base::sync_with_stdio(false);
 	setup();
 	vector<Sample> samples;
-	printf("%d\n",sizeof(unsigned char*));
+	printf("%lu\n",sizeof(unsigned char*));
 	unsigned char* A,*bytes = (unsigned char*) malloc( ((S*B*W)+(S*B))*sizeof(unsigned char) );
 	int i=0;
 	cout<<"add"<<(long long)A<<" "<<(long long)bytes<<endl;
