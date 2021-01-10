@@ -197,7 +197,7 @@ int main(){
 				cpu_time_used = ((end - start));
 				//cpu_time_used1 = ((end1 - start1));
 				cpu_time_used2 = ((end2 - start2));
-				printf("%llu, %llu \n", cpu_time_used,cpu_time_used2);
+				printf("%ld, %ld \n", cpu_time_used,cpu_time_used2);
 				//Mk(p,l,y)=cpu_time_used
 			//	cout<<cpu_time_used<<" "<<cpu_time_used2<<endl;
 				samples.push_back(Sample(p1,y,cpu_time_used2,l));
