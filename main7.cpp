@@ -93,7 +93,7 @@ vector<unsigned char> AESencrypt(vector<unsigned char> p){
 int main(){
 	ios_base::sync_with_stdio(false);
 	setup();
-	vector<Sample> samples;
+	//vector<Sample> samples;
 	printf("%lu\n",sizeof(unsigned char*));
 	unsigned char* A,*bytes = (unsigned char*) malloc( ((S*B*W)+(S*B))*sizeof(unsigned char) );
 	int i=0;
